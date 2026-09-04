@@ -1,0 +1,5 @@
+# Never publish the résumé version carrying a home address and phone number.
+assets/resume/PRIVATE-*
+
+.DS_Store
+Thumbs.db

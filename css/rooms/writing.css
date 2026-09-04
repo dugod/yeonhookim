@@ -1,0 +1,7 @@
+/* ==========================================================================
+   writing.css — Room 03 only
+
+   The category layout lives in css/room-base.css. This file is for anything
+   true of this room alone. Empty on purpose; it loads after room-base.css, so
+   anything here overrides it.
+   ========================================================================== */

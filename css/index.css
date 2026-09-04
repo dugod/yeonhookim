@@ -1,0 +1,159 @@
+/* ==========================================================================
+   index.css — homepage only
+   The hero and the wall of room tiles. Nothing here is used elsewhere.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-top: clamp(38px, 5vw, 66px);
+  padding-bottom: clamp(28px, 3.4vw, 42px);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: end;
+}
+
+.hero-eyebrow { margin-bottom: 18px; }
+
+.hero-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(31px, 4.7vw, 53px);
+  line-height: 1.03;
+  letter-spacing: -0.028em;   /* tighten hard at display size */
+  margin: 0;
+}
+.hero-title em { font-style: italic; color: var(--maroon); }
+
+.hero-intro {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: #474747;
+  margin: 0;
+  max-width: 40ch;
+  letter-spacing: -0.009em;
+}
+
+/* --------------------------------------------------------------------------
+   The wall
+   Four-column grid. Rooms 01 and 04 span two columns — tile size is the only
+   signal on this page telling a reader which categories carry the most weight.
+   -------------------------------------------------------------------------- */
+.wall {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.7vw, 22px);
+  padding-bottom: clamp(38px, 4.6vw, 58px);
+}
+
+.room-tile {
+  grid-column: span 1;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.room-tile--wide { grid-column: span 2; }
+
+.room-tile-frame {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.18s, transform 0.18s;
+}
+.room-tile:hover .room-tile-frame,
+.room-tile:focus-visible .room-tile-frame {
+  border-color: var(--bright);
+  transform: translateY(-3px);
+}
+
+.room-tile-enter {
+  position: absolute;
+  right: 11px;
+  bottom: 11px;
+  background: var(--paper);
+  color: var(--maroon);
+  border-radius: 2px;
+  padding: 5px 9px;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+.room-tile:hover .room-tile-enter,
+.room-tile:focus-visible .room-tile-enter { opacity: 1; }
+
+.room-tile-label { padding-top: 10px; }
+
+.room-tile-kicker {
+  color: var(--deep);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.room-tile-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: -0.014em;
+  margin: 5px 0 4px;
+  transition: color 0.15s;
+}
+.room-tile:hover .room-tile-title { color: var(--maroon); }
+
+.room-tile-caption {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--slate);
+  letter-spacing: -0.004em;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; align-items: start; }
+  .wall { grid-template-columns: repeat(2, 1fr); }
+  .room-tile--wide { grid-column: span 2; }
+}
+
+@media (max-width: 520px) {
+  .wall { grid-template-columns: 1fr; }
+  .room-tile--wide { grid-column: span 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Typographic tiles
+   Two rooms have no photograph yet. Rather than show an empty placeholder on
+   the most important page of the site, those tiles carry their room number as
+   the image. Swap in <img class="is-photo"> when a photo exists and delete the
+   --type modifier.
+   -------------------------------------------------------------------------- */
+.room-tile-frame--type {
+  background: var(--tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.room-tile-numeral {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(64px, 13vw, 150px);
+  line-height: 0.8;
+  color: var(--maroon);
+  opacity: 0.16;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.room-tile-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }

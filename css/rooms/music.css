@@ -1,0 +1,15 @@
+/* ==========================================================================
+   music.css — Room 05 only
+
+   The category layout lives in css/room-base.css. This file is for anything
+   true of this room alone. Empty on purpose; it loads after room-base.css, so
+   anything here overrides it.
+   ========================================================================== */
+
+/* Room 05 runs the jazz band entry full width with the recordings underneath,
+   because three video players do not fit in the narrow media column. */
+.entry--wide .entry-media-below { max-width: none; }
+
+.entry--wide .media-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}

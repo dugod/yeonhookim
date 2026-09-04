@@ -1,0 +1,122 @@
+/* ==========================================================================
+   about.css — About page only
+
+   The About page is intentionally unbuilt. These rules cover the placeholder
+   state and the portrait-plus-prose layout it will most likely become.
+   Delete .about-placeholder once real content lands.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Placeholder state — remove when content is written
+   -------------------------------------------------------------------------- */
+.about-placeholder {
+  padding-top: clamp(56px, 8vw, 110px);
+  padding-bottom: clamp(56px, 8vw, 110px);
+  max-width: 52ch;
+}
+
+.about-placeholder-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 50px);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  margin: 14px 0 18px;
+}
+
+.about-placeholder p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--slate);
+  margin: 0 0 14px;
+  letter-spacing: -0.009em;
+}
+
+/* --------------------------------------------------------------------------
+   Intended layout — portrait beside prose.
+   Unused until the placeholder is replaced; kept here so the structure is
+   already decided rather than improvised later.
+   -------------------------------------------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: clamp(20px, 3.4vw, 48px);
+  align-items: start;
+  padding-top: clamp(34px, 4.4vw, 58px);
+  padding-bottom: clamp(46px, 6vw, 78px);
+}
+
+.about-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+/* offset maroon frame, echoing the catalogue's object treatment */
+.about-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 10px -10px -10px 10px;
+  border: 1px solid var(--maroon);
+  z-index: -1;
+}
+
+.about-body p {
+  font-size: 14.5px;
+  line-height: 1.78;
+  color: #3d3d3d;
+  margin: 0 0 15px;
+  max-width: 58ch;
+  letter-spacing: -0.009em;
+}
+
+/* opening paragraph carries the serif — sets it apart as a statement */
+.about-body p:first-of-type {
+  font-family: var(--display);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.5;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 640px) {
+  .about { grid-template-columns: 1fr; }
+  .about-portrait { max-width: 180px; }
+}
+
+/* --------------------------------------------------------------------------
+   Live layout — replaces the placeholder state above.
+   The portrait sits inside a <figure>, so the offset maroon frame is drawn on
+   the figure rather than the image itself.
+   -------------------------------------------------------------------------- */
+.about > figure { position: relative; }
+
+.about > figure::after {
+  content: "";
+  position: absolute;
+  inset: 10px -10px -10px 10px;
+  border: 1px solid var(--maroon);
+  z-index: -1;
+}
+
+.about-portrait {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+
+.about-body > .label { margin-bottom: 16px; }
+.about-body .chip { margin-top: 22px; display: inline-block; }
+
+/* --------------------------------------------------------------------------
+   Larger portrait
+   The column was 200px, which made the photograph an afterthought beside the
+   prose. At 300px it holds its own without pushing the text measure below a
+   comfortable line length.
+   -------------------------------------------------------------------------- */
+.about { grid-template-columns: minmax(240px, 320px) 1fr; }
+
+@media (max-width: 760px) {
+  .about { grid-template-columns: 1fr; }
+  .about > figure { max-width: 320px; }
+}

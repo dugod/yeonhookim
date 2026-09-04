@@ -1,0 +1,342 @@
+/* ==========================================================================
+   room-base.css — the category page template
+   Shared by all six room pages. Room-specific overrides go in the stylesheet
+   named after that room, e.g. css/rooms/physics-research.css.
+
+   Note: this file is a deliberate addition to the one-stylesheet-per-page
+   rule. All six rooms use an identical layout, so duplicating ~250 lines six
+   times would mean six places to fix every future change.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Room header
+   -------------------------------------------------------------------------- */
+.room-header {
+  padding-top: clamp(24px, 3vw, 38px);
+  padding-bottom: clamp(26px, 3.2vw, 40px);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: end;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.room-kicker { margin-bottom: 14px; }
+
+.room-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 50px);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  margin: 0;
+}
+
+.room-intro {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: #474747;
+  margin: 0;
+  max-width: 40ch;
+  letter-spacing: -0.009em;
+}
+
+/* headline figures — three at most, or they stop being figures */
+.room-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding-top: 14px;
+}
+.room-stat {
+  padding-right: 22px;
+  margin-right: 22px;
+  border-right: 1px solid var(--rule);
+}
+.room-stat:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+
+.room-stat-figure {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--maroon);
+  line-height: 1.1;
+}
+.room-stat-caption {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-top: 5px;
+}
+
+/* --------------------------------------------------------------------------
+   Entries
+   -------------------------------------------------------------------------- */
+.entries { padding-bottom: clamp(20px, 2.6vw, 32px); }
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 1.55fr;
+  gap: clamp(18px, 3.2vw, 46px);
+  padding: clamp(26px, 3.4vw, 44px) 0;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 24px;   /* so anchor jumps don't clip the number */
+}
+
+/* brief flash when a reader jumps here from the index — see room-base.js */
+.entry.is-targeted { background: var(--row-hover); transition: background 0.4s; }
+
+.entry-media { min-width: 0; }
+
+.entry-shot {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+
+.entry-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 7px;
+}
+.entry-thumb {
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+
+.entry-body { min-width: 0; }
+
+.entry-number {
+  color: var(--deep);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.55;
+}
+
+.entry-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(19px, 2.2vw, 24px);
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  margin: 7px 0 6px;
+}
+
+/* the museum label line — medium, materials, dimensions, year */
+.entry-label {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--slate);
+  letter-spacing: -0.004em;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 14px;
+}
+
+.entry-body p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #3d3d3d;
+  margin: 0 0 13px;
+  max-width: 54ch;
+  letter-spacing: -0.009em;
+}
+.entry-body p:last-of-type { margin-bottom: 0; }
+.entry-body p strong { font-weight: 600; color: var(--ink); }
+
+.entry-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2.6vw, 34px);
+  margin-top: 17px;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+.entry-fact-figure {
+  font-family: var(--display);
+  font-size: 23px;
+  color: var(--maroon);
+  line-height: 1;
+}
+.entry-fact-caption {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-top: 5px;
+}
+
+.entry .chips { margin-top: 18px; }
+
+/* --------------------------------------------------------------------------
+   Room-to-room navigation
+   A reader who finishes a room is warm. Give them a door, not a dead end.
+   -------------------------------------------------------------------------- */
+.room-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.room-nav a {
+  background: var(--paper);
+  padding: 22px var(--gutter);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.room-nav a:hover { background: var(--row-hover); }
+
+.room-nav-label {
+  color: var(--slate);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.room-nav-title {
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  margin-top: 6px;
+  transition: color 0.15s;
+}
+.room-nav a:hover .room-nav-title { color: var(--maroon); }
+
+.room-nav-next { text-align: right; }
+
+/* the footer sits directly under room-nav, which already draws a rule */
+.room-page .site-footer { border-top: 0; }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .room-header { grid-template-columns: 1fr; align-items: start; }
+  .room-nav { grid-template-columns: 1fr; }
+  .room-nav-next { text-align: left; }
+}
+
+@media (max-width: 820px) {
+  .entry { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   Entry variants
+   Not every entry has a photograph, and forcing an empty frame into the media
+   column makes a finished page look unfinished. Entries without media run
+   full width instead, with the text measure holding the line length.
+   -------------------------------------------------------------------------- */
+.entry--text { grid-template-columns: 1fr; }
+.entry--text .entry-body { max-width: 62ch; }
+
+/* full-width entry with media underneath rather than beside */
+.entry--wide { grid-template-columns: 1fr; }
+.entry--wide .entry-body { max-width: none; }
+.entry--wide .entry-body p { max-width: 68ch; }
+
+/* --------------------------------------------------------------------------
+   Media below an entry — recordings, extra stills
+   -------------------------------------------------------------------------- */
+.entry-media-below {
+  margin-top: clamp(20px, 2.6vw, 32px);
+  padding-top: clamp(18px, 2.2vw, 26px);
+  border-top: 1px solid var(--rule);
+}
+
+.media-heading {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 0 0 14px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.media-grid video {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.media-grid figcaption { margin-top: 8px; }
+.media-grid figcaption strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+/* a linked recording that has no local file */
+.media-link {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 16px 17px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.15s, background 0.15s;
+}
+.media-link:hover { border-color: var(--bright); background: var(--row-hover); }
+.media-link strong {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.media-link span { font-size: 11.5px; color: var(--slate); }
+
+/* --------------------------------------------------------------------------
+   Thumbnails
+   A strip of up to three squares under the main photograph. The column already
+   sets the width, so the grid only has to divide it.
+   -------------------------------------------------------------------------- */
+.entry-thumb {
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  background: var(--tint);
+}
+
+/* diagrams and plots are padded to square already — show them whole */
+.entry-thumb.is-document { object-fit: contain; background: #FFFFFF; }
+
+.entry-media > .entry-thumbs { margin-top: 7px; }
+
+/* --------------------------------------------------------------------------
+   Lead image on a full-width entry
+   -------------------------------------------------------------------------- */
+.entry-lead {
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.entry-lead img { width: 100%; height: 100%; object-fit: cover; display: block; }

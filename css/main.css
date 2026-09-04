@@ -1,0 +1,451 @@
+/* ==========================================================================
+   main.css — shared foundation
+   Loaded by every page. Contains design tokens, base type, the site header,
+   the site footer, and components that appear on more than one page.
+   Page-specific rules belong in the stylesheet named after that page.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   Palette is locked. Change a value here and it changes everywhere.
+   -------------------------------------------------------------------------- */
+:root {
+  /* palette */
+  --paper:      #F8F7F4;   /* page background */
+  --ink:        #171717;   /* main text */
+  --maroon:     #800000;   /* primary — titles, italics, accents */
+  --deep:       #007396;   /* labels, catalogue numbers */
+  --slate:      #737373;   /* muted text */
+  --rule:       #D9D9D9;   /* hairlines and borders */
+  --bright:     #3EB1C8;   /* hover and focus ONLY — never at rest */
+
+  /* derived surfaces */
+  --tint:       #EDEBE6;   /* empty image frame fill */
+  --tint-line:  #DFDCD5;   /* empty image frame diagonal */
+  --row-hover:  #F2F0EB;   /* list row hover */
+
+  /* type */
+  --display: "DM Serif Display", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --body:    "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* layout */
+  --shell:  1180px;
+  --gutter: clamp(20px, 4.4vw, 60px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.008em;
+  -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--bright);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* skip link — keyboard users land here first */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--maroon);
+  color: var(--paper);
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 100;
+  text-decoration: none;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* --------------------------------------------------------------------------
+   3. Layout helpers
+   -------------------------------------------------------------------------- */
+.shell {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* --------------------------------------------------------------------------
+   4. Type utilities
+   .label is the small-caps specimen label used throughout. Wide tracking at
+   weight 500 is what replaced the monospace face — keep both values together.
+   -------------------------------------------------------------------------- */
+.label {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+
+.label--deep  { color: var(--deep); }
+.label--slate { color: var(--slate); }
+
+/* DM Serif Display ships in ONE weight (400). Never synthesize bold or light —
+   change size instead. Tracking tightens as the face grows. */
+.display { font-family: var(--display); font-weight: 400; }
+
+/* --------------------------------------------------------------------------
+   5. Empty image frame
+   Diagonal cross is the standard design-tool mark for an unfilled slot.
+   Replace .is-blank with a real <img> when the photograph exists.
+   -------------------------------------------------------------------------- */
+.is-blank {
+  background-color: var(--tint);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 100 100'%3E%3Cpath d='M0 0 L100 100 M100 0 L0 100' stroke='%23DFDCD5' stroke-width='0.6' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+/* aspect-ratio utilities */
+.ratio-16-9 { aspect-ratio: 16 / 9; }
+.ratio-4-3  { aspect-ratio: 4 / 3; }
+.ratio-4-5  { aspect-ratio: 4 / 5; }
+.ratio-1-1  { aspect-ratio: 1 / 1; }
+
+/* --------------------------------------------------------------------------
+   6. Site header — identical on every page
+   -------------------------------------------------------------------------- */
+.site-header { border-bottom: 1.5px solid var(--ink); }
+
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 26px;
+  padding-bottom: 16px;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--ink);
+  flex: none;
+}
+/* the italic maroon appears exactly twice on the site: here and the homepage
+   headline. Adding a third occurrence dilutes it. */
+.wordmark em { font-style: italic; color: var(--maroon); }
+
+.site-nav {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(12px, 2.2vw, 28px);
+}
+
+.site-nav a {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.site-nav a:hover { color: var(--maroon); }
+
+.site-nav a.is-current {
+  color: var(--ink);
+  border-bottom: 1px solid var(--maroon);
+  padding-bottom: 3px;
+}
+
+/* mobile menu button — hidden until the breakpoint */
+.nav-toggle {
+  display: none;
+  flex: none;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 8px 11px;
+  cursor: pointer;
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: border-color 0.15s, color 0.15s;
+}
+.nav-toggle:hover { border-color: var(--maroon); color: var(--maroon); }
+
+/* --------------------------------------------------------------------------
+   7. Breadcrumb
+   -------------------------------------------------------------------------- */
+.crumb {
+  padding-top: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--slate);
+}
+.crumb a { color: var(--slate); text-decoration: none; transition: color 0.15s; }
+.crumb a:hover { color: var(--maroon); }
+.crumb-sep { color: var(--rule); }
+.crumb-current { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   8. Contents list — dotted-leader index
+   Used on the homepage and inside every room.
+   -------------------------------------------------------------------------- */
+.contents { padding-top: 16px; padding-bottom: clamp(34px, 4.4vw, 54px); }
+.contents--ruled { border-top: 1.5px solid var(--ink); }
+
+.contents-heading {
+  color: var(--slate);
+  margin: 0 0 12px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contents-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 clamp(24px, 4vw, 54px);
+}
+
+.contents-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  font-size: 13.5px;
+  letter-spacing: -0.008em;
+  transition: color 0.15s;
+}
+.contents-list a:hover { color: var(--maroon); }
+
+.contents-num {
+  color: var(--deep);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  flex: none;
+  width: 26px;
+  font-variant-numeric: tabular-nums;
+}
+
+.contents-leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--rule);
+  transform: translateY(-3px);
+}
+
+.contents-meta {
+  font-size: 11px;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   9. Link chips
+   -------------------------------------------------------------------------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--slate);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.chip:hover { background: var(--bright); border-color: var(--bright); color: #0d2f36; }
+
+.chip--primary { border-color: var(--maroon); color: var(--maroon); }
+.chip--primary:hover { background: var(--maroon); border-color: var(--maroon); color: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   10. Site footer — identical on every page
+   -------------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1.5px solid var(--maroon);
+  padding-top: clamp(28px, 3.6vw, 44px);
+  padding-bottom: clamp(28px, 3.6vw, 42px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(18px, 3vw, 40px);
+  align-items: end;
+}
+
+.footer-label { color: var(--deep); margin-bottom: 12px; }
+
+.footer-email {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(19px, 2.7vw, 31px);
+  color: var(--maroon);
+  text-decoration: none;
+  letter-spacing: -0.022em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+  word-break: break-word;
+}
+.footer-email:hover { border-bottom-color: var(--bright); }
+
+.footer-links {
+  text-align: right;
+  line-height: 2.1;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.footer-links a { color: inherit; text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--maroon); }
+
+.footer-colophon {
+  padding-top: 14px;
+  padding-bottom: 18px;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--slate);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   11. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .contents-list { grid-template-columns: 1fr; }
+  .site-footer { grid-template-columns: 1fr; }
+  .footer-links { text-align: left; }
+}
+
+@media (max-width: 620px) {
+  .header-inner { flex-wrap: wrap; align-items: center; }
+
+  .nav-toggle { display: block; order: 2; }
+
+  .site-nav {
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .site-nav.is-open { max-height: 260px; }
+
+  .site-nav a {
+    width: 100%;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-nav a.is-current { border-bottom-color: var(--maroon); padding-bottom: 13px; }
+}
+
+/* --------------------------------------------------------------------------
+   12. Authoring aid — DELETE BEFORE PUBLISHING
+   Every .draft-note marks something only Yeonhoo can write. They are styled
+   to be impossible to mistake for finished content. When the site is ready,
+   deleting every .draft-note block and this rule is the last step.
+   -------------------------------------------------------------------------- */
+.draft-note {
+  border: 1px dashed var(--maroon);
+  border-radius: 2px;
+  padding: 14px 16px;
+  margin-top: 18px;
+  background: #FBF7F6;
+  max-width: 56ch;
+}
+
+.draft-note-label {
+  color: var(--maroon);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.draft-note ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--slate);
+  letter-spacing: -0.004em;
+}
+.draft-note li::marker { color: var(--maroon); }
+.draft-note li + li { margin-top: 5px; }
+
+/* the room-level note sits under the contents list, outside an entry */
+.contents .draft-note { margin-top: 22px; }
+
+/* entry facts need a wrapper class now that captions vary */
+.entry-fact-item { min-width: 0; }
+
+/* --------------------------------------------------------------------------
+   13. Real images
+   Replaces the .is-blank placeholder wherever a photograph now exists. The
+   ratio utilities still control the box; object-fit stops the photo distorting.
+   -------------------------------------------------------------------------- */
+img.is-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: var(--tint);
+}
+
+/* certificates and scans read better whole than cropped */
+img.is-document {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #FFFFFF;
+}
+
+figure { margin: 0; }
+
+figcaption {
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--slate);
+  margin-top: 7px;
+  letter-spacing: -0.002em;
+}
