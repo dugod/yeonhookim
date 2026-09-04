@@ -1,50 +1,6 @@
 # Yeonhoo Kim — application site
 
-A static site. No build step, no dependencies, no framework. Open `index.html`
-in a browser and it works.
-
----
-
-## Read this first — three things to verify
-
-These are factual claims that will sit in front of admissions readers. I built
-the site around what the certificates actually say, which in three places is not
-what the résumé says.
-
-**1. Taekwondo grade.** The certificate reads **4th Poom**, Kukkiwon-registered
-June 2022. Poom is the youth grade; it converts to Dan at 15, and the ID card on
-the certificate shows a 2009 birth date, so you may hold 4th Dan now by
-conversion — but nothing supplied confirms that. The site currently says
-"fourth grade, registered with the Kukkiwon in June 2022" and the room figure
-reads "4th Kukkiwon grade." The résumé says "4th Dan Black Belt." Decide which
-is accurate, then make both match.
-
-**2. Scholastic.** The Silver Key certificate is **2026 only**, for *The Starr*.
-The 2025 certificate is participation. The résumé claims Silver Key in both 10th
-and 11th grade. The site is built around the 2026 Silver Key alone.
-
-**3. John Locke.** There are **three** commendation certificates — Junior 2023,
-Psychology 2023, History 2024 — where the résumé lists two lines. The site says
-three commendations and posts all three essays.
-
-**Also:** the Scholastic and CIMC certificates read **Daniel Kim**, as do two of
-the supplied filenames. The site uses Yeonhoo Kim throughout. Pick one name and
-use it everywhere, including the résumé.
-
-## Roles taken from the workbook, not the résumé
-
-Where the two disagreed, the workbook won — it was more specific. **The résumé
-still needs updating to match**, or these need flipping back:
-
-| | Site says | Résumé says |
-|---|---|---|
-| Volleyball | Player Gr 9, Captain Gr 10–11 | Captain 9th–11th |
-| US Pushcart Library | Member Gr 9–11, Co-Leader Gr 12 | Co-Leader 9th–present |
-| Beyond the Border | Member Gr 9–10, Leader Gr 11– | Leader 9th–present |
-| Culture Protectors | Member Gr 10, Leader Gr 11– | Leader 10th–present |
-| J'Blue Jazz Band | Drums, helps organise | Player (Drums) ✓ matches |
-
----
+A static site.
 
 ## Structure
 
@@ -76,20 +32,6 @@ site/
     └── resume/Yeonhoo-Kim-Resume.pdf
 ```
 
-## Conventions
-
-**No inline CSS or JS.** No `style="..."` attributes, no `<style>` blocks, no
-inline `<script>` blocks anywhere. Verified across all eight pages.
-
-**One stylesheet and one script per page**, named after the page.
-
-**Two shared files break that rule deliberately.** `room-base.css` and
-`room-base.js` hold the category-page template. All six rooms use the same
-layout, so duplicating it six times would mean six places to fix every change.
-Per-room files load *after* room-base, so anything in them overrides it.
-
-**Load order:** `main.css` → `room-base.css` → `rooms/<room>.css`.
-
 ## Regenerating
 
 `build.py` (kept outside this folder) generates all eight HTML pages from one
@@ -115,18 +57,6 @@ for it. Photographs of the actual work carry the pages instead.
 The `.room-tile-frame--type` rule in `index.css` draws a room numeral in place
 of a photograph. All six rooms have photographs now, so nothing uses it — it is
 kept in case a seventh room arrives before its picture does.
-
-## Still missing
-
-- **Blog content** — entry 3.4 is one line; the blog itself wasn't reachable
-- **Two Room 01 links** — the GCIMM poster and the journal submission page
-- **Photographs** for Physics Bowl, Sir Isaac Newton, WMTC, all of Room 03, and
-  the CMAS entry. Those entries run full width instead (`.entry--text`).
-
-One supplied image was not placed: a "Daniel Kim — US Director, Class of 2027"
-card, which sat in the CIMC thumbnails in the workbook. Nothing on the résumé
-explains it, so rather than guess at a role I left it out. Tell me what it is
-and it goes in.
 
 ## Images
 
