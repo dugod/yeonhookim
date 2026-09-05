@@ -449,3 +449,37 @@ figcaption {
   margin-top: 7px;
   letter-spacing: -0.002em;
 }
+
+/* --------------------------------------------------------------------------
+   14. Larger navigation
+   The nav now matches the wordmark: same face, same size. Dropping the
+   uppercase and the wide tracking is deliberate — at 22px, letter-spaced
+   capitals would run past 500px and collide with the name on a 13" laptop.
+   Serif at sentence case reads as a peer of the wordmark instead of a label.
+   -------------------------------------------------------------------------- */
+.site-nav a {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+
+.site-nav a.is-current { padding-bottom: 4px; }
+
+/* margin rather than flex `gap` so spacing survives older rendering engines */
+.site-nav { gap: 0; }
+.site-nav a + a { margin-left: 30px; }
+
+/* wordmark and nav shrink together, so they always match */
+@media (max-width: 900px) {
+  .wordmark { font-size: 19px; }
+  .site-nav a { font-size: 19px; }
+  .site-nav a + a { margin-left: 20px; }
+}
+
+@media (max-width: 620px) {
+  .site-nav a { font-size: 21px; padding: 15px 0; }
+  .site-nav a + a { margin-left: 0; }   /* stacked, not inline */
+}
