@@ -483,3 +483,38 @@ figcaption {
   .site-nav a { font-size: 21px; padding: 15px 0; }
   .site-nav a + a { margin-left: 0; }   /* stacked, not inline */
 }
+
+/* --------------------------------------------------------------------------
+   15. Footer résumé button
+   The résumé was a 10px line lost among the other footer links. As a bordered
+   maroon button in the display face it balances the large email opposite it,
+   and it is the one thing in the footer a reader is likely to want.
+   -------------------------------------------------------------------------- */
+.footer-small {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.footer-links a.footer-resume {
+  display: inline-block;
+  border: 1px solid var(--maroon);
+  border-radius: 2px;
+  padding: 13px 22px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: -0.012em;
+  text-transform: none;
+  color: var(--maroon);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.footer-links a.footer-resume:hover { background: var(--maroon); color: var(--paper); }
+
+@media (max-width: 620px) {
+  .footer-links a.footer-resume { font-size: 17px; padding: 12px 18px; }
+}
