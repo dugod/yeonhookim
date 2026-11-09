@@ -125,7 +125,9 @@ ROOMS = [
                     "built-in Fourier transform sorted frequencies into bins about 0.5&nbsp;Hz "
                     "wide, too coarse to see a change that small, so the analysis moved to a "
                     "Python script that splits the recording into individual flicks, windows and "
-                    "zero-pads each one, and interpolates the spectral peak.",
+                    "zero-pads each one, and interpolates the spectral peak. Tested on 400 "
+                    "synthetic signals of known frequency, it recovered the answer to within about "
+                    "0.002&nbsp;Hz.",
                     "<strong>The result only partly answers the question.</strong> Across the "
                     "full range there was no clear relationship. Between 82.1&nbsp;&deg;C and "
                     "138.4&nbsp;&deg;C the frequency fell steadily, at "
@@ -137,16 +139,24 @@ ROOMS = [
                     "Below 82&nbsp;&deg;C the frequencies sat lower than the hotter points, "
                     "which heating cannot explain. I could not identify the cause, so instead of "
                     "calling those points errors I limited the conclusion to the range where the "
-                    "data behaved. The room-temperature trial also used a different clamp from "
-                    "the oven trials, and the ruler was too thin to measure reliably with a "
-                    "micrometer, which threw off the calculated density and modulus: the model "
-                    "predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz. The next "
-                    "version needs one clamp for every trial, a thermocouple taped to the ruler, "
-                    "and a controlled release height.",
+                    "data behaved.",
+                    "The model also predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz, "
+                    "and I traced that gap to two causes. The textbook clamp used to measure the "
+                    "constants was slightly compliant, so the ruler behaved as if it were about "
+                    "15&nbsp;mm longer; allowing for that brings the prediction to 26.62&nbsp;Hz, "
+                    "within 0.4% of the measurement. The ruler&rsquo;s measured thickness was also "
+                    "too small, which inflated both the density and Young&rsquo;s modulus; a single "
+                    "corrected thickness brings both back into the accepted range for stainless "
+                    "steel. Neither affects the temperature coefficient, because every dimension "
+                    "cancels out of the fractional gradient.",
+                    "The next version needs one rigid clamp for every trial, a thermocouple taped "
+                    "to the ruler, and a release from a fixed stop instead of a flick by hand.",
                     "This began as my Extended Essay, and I am carrying it on as an individual "
                     "investigation.",
                 ],
-                "links": [],
+                "facts": [("0.26&nbsp;Hz", "Shift measured"), ("&plusmn;0.002&nbsp;Hz", "Method accuracy"),
+                          ("11.5%", "From literature &alpha;<sub>E</sub>")],
+                "links": [("Read the full investigation, PDF &#8595;", DOC + "cantilever-investigation.pdf", True)],
             },
             {
                 "n": "1.3",
