@@ -1,6 +1,18 @@
 # Yeonhoo Kim — application site
 
-A static site.
+A static site. No build step, no dependencies, no framework. Open `index.html`
+in a browser and it works.
+
+---
+
+## Content notes
+
+The site carries the detailed version of each role (when someone was a member
+and when they became a leader). The résumé condenses these on purpose for
+length. Both are deliberate.
+
+The Extended Essay (entry 1.2) is described from the October 2026 essay. The
+essay itself is not posted.
 
 ## Structure
 
@@ -32,6 +44,20 @@ site/
     └── resume/Yeonhoo-Kim-Resume.pdf
 ```
 
+## Conventions
+
+**No inline CSS or JS.** No `style="..."` attributes, no `<style>` blocks, no
+inline `<script>` blocks anywhere. Verified across all eight pages.
+
+**One stylesheet and one script per page**, named after the page.
+
+**Two shared files break that rule deliberately.** `room-base.css` and
+`room-base.js` hold the category-page template. All six rooms use the same
+layout, so duplicating it six times would mean six places to fix every change.
+Per-room files load *after* room-base, so anything in them overrides it.
+
+**Load order:** `main.css` → `room-base.css` → `rooms/<room>.css`.
+
 ## Regenerating
 
 `build.py` (kept outside this folder) generates all eight HTML pages from one
@@ -57,6 +83,18 @@ for it. Photographs of the actual work carry the pages instead.
 The `.room-tile-frame--type` rule in `index.css` draws a room numeral in place
 of a photograph. All six rooms have photographs now, so nothing uses it — it is
 kept in case a seventh room arrives before its picture does.
+
+## Still missing
+
+- **Blog content** — entry 3.4 is one line; the blog itself wasn't reachable
+- **Two Room 01 links** — the GCIMM poster and the journal submission page
+- **Photographs** for Physics Bowl, Sir Isaac Newton, WMTC, all of Room 03, and
+  the CMAS entry. Those entries run full width instead (`.entry--text`).
+
+One supplied image was not placed: a "Daniel Kim — US Director, Class of 2027"
+card, which sat in the CIMC thumbnails in the workbook. Nothing on the résumé
+explains it, so rather than guess at a role I left it out. Tell me what it is
+and it goes in.
 
 ## Images
 

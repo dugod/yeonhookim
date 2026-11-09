@@ -34,11 +34,11 @@ ROOMS = [
         "tile": {"src": IMG + "room-physics-tile.jpg", "ratio": "ratio-16-9",
                  "alt": "Yeonhoo in the lab at Jeonbuk University, in front of a whiteboard showing bi-stable and mono-stable switch working"},
         "wide": True,
-        "tile_caption": ("Nonlinear vibration with a university advisor, an Extended Essay in "
-                         "revision, and two Stanford courses still open."),
+        "tile_caption": ("A paper under review on nonlinear vibration, an Extended Essay on "
+                         "heated steel, and three university courses."),
         "intro": ("The first and most valuable room. Understanding the world through physics: "
                   "studying, researching, and experimenting."),
-        "stats": [("1", "Paper submitted"), ("1", "In revision"), ("1", "Conference poster")],
+        "stats": [("1", "Paper under review"), ("1", "Conference poster"), ("3", "University courses")],
         "entries": [
             {
                 "n": "1.1",
@@ -46,10 +46,11 @@ ROOMS = [
                 "title": "Asymmetric Monostable Behavior of an Elastic von Mises Truss Under Base Excitation",
                 "year": "2025—",
                 "meta": ["April 2025 — present &middot; Advisor, Professor P. Kim, Jeonbuk University",
-                         "Poster accepted, GCIMM 2026 &middot; Submitted, Journal of Emerging Investigators 2026"],
+                         "Poster accepted, GCIMM 2026 &middot; Under review, National High School Journal of Science 2026"],
                 "label": ("Research paper. Simulation built in MATLAB. Advised at Jeonbuk "
-                          "University. Poster accepted for presentation at GCIMM 2026; submitted "
-                          "to the Journal of Emerging Investigators, 2026."),
+                          "University. Poster accepted for presentation at the Global Conference "
+                          "on Industrial, Materials, and Manufacturing (GCIMM), 2026; under review "
+                          "at the National High School Journal of Science (NHSJS), 2026."),
                 "image": {"src": IMG + "truss-whiteboard.jpg", "kind": "photo",
                           "alt": "Whiteboard at the Jeonbuk University lab showing bi-stable and mono-stable switch derivations",
                           "caption": "Working through the bi-stable and mono-stable cases at the lab."},
@@ -97,10 +98,10 @@ ROOMS = [
                 "short": "Effect of Temperature Parameter on a Vibrating Cantilever System",
                 "title": "Investigation on the Effect of Temperature Parameter on a Vibrating Cantilever System",
                 "year": "2025—",
-                "meta": ["Grade 11 — present &middot; IB Extended Essay, carried on as an individual investigation"],
-                "label": ("Extended Essay in physics, still in revision. Research question: how "
-                          "does temperature affect the natural frequency of a stainless steel "
-                          "cantilever beam at a fixed length?"),
+                "meta": ["Grade 11 — present &middot; Individual research &middot; IB Extended Essay in physics, May 2027 session"],
+                "label": ("Research question: how does temperature affect the natural frequency "
+                          "of a stainless steel cantilever beam at a fixed length? Tested from "
+                          "24.8&nbsp;&deg;C to 138.4&nbsp;&deg;C."),
                 "image": {"src": IMG + "ee-apparatus.jpg", "kind": "photo",
                           "alt": "The cantilever rig inside the oven: a steel ruler clamped between wooden blocks with a G-clamp, sensor cable taped to a post",
                           "caption": "The rig inside the oven."},
@@ -115,16 +116,35 @@ ROOMS = [
                     "heat a metal beam and its Young&rsquo;s modulus falls, so the frequency it "
                     "wants to ring at drifts with temperature.",
                     "The apparatus is deliberately cheap. A stainless steel ruler is clamped "
-                    "between two wooden blocks with G-clamps at the 15 cm mark, magnets are fixed "
-                    "at the free end, and a Hall-effect sensor reads the oscillation. The whole "
-                    "assembly goes into an oven, and readings run from room temperature up to "
-                    "140&nbsp;&deg;C.",
-                    "Two effects compete as the steel heats. The falling Young&rsquo;s modulus "
-                    "lowers the frequency, and thermal expansion lengthens the beam slightly, "
-                    "which lowers it too &mdash; but across this range the expansion term is "
-                    "roughly eight times smaller, so the modulus dominates.",
-                    "This began as my Extended Essay, but I have taken it past what the essay "
-                    "required and am still revising it as an individual investigation.",
+                    "between two wooden blocks with G-clamps at the 15 cm mark, a small magnet "
+                    "sits on each face of the free tip, and a Hall-effect sensor reads the "
+                    "oscillation at 1,000 samples a second. The whole assembly goes into an oven, "
+                    "with trials at six temperatures up to 140&nbsp;&deg;C and one at room "
+                    "temperature.",
+                    "The model predicted the whole shift would be only about 0.6&nbsp;Hz. The "
+                    "built-in Fourier transform sorted frequencies into bins about 0.5&nbsp;Hz "
+                    "wide, too coarse to see a change that small, so the analysis moved to a "
+                    "Python script that splits the recording into individual flicks, windows and "
+                    "zero-pads each one, and interpolates the spectral peak.",
+                    "<strong>The result only partly answers the question.</strong> Across the "
+                    "full range there was no clear relationship. Between 82.1&nbsp;&deg;C and "
+                    "138.4&nbsp;&deg;C the frequency fell steadily, at "
+                    "&minus;0.0047&nbsp;&plusmn;&nbsp;0.0012&nbsp;Hz per degree, which gives a "
+                    "temperature coefficient of Young&rsquo;s modulus of "
+                    "(&minus;3.5&nbsp;&plusmn;&nbsp;0.9)&nbsp;&times;&nbsp;10<sup>&minus;4</sup> per "
+                    "degree, within uncertainty of the literature value of "
+                    "&minus;4.0&nbsp;&times;&nbsp;10<sup>&minus;4</sup>.",
+                    "Below 82&nbsp;&deg;C the frequencies sat lower than the hotter points, "
+                    "which heating cannot explain. I could not identify the cause, so instead of "
+                    "calling those points errors I limited the conclusion to the range where the "
+                    "data behaved. The room-temperature trial also used a different clamp from "
+                    "the oven trials, and the ruler was too thin to measure reliably with a "
+                    "micrometer, which threw off the calculated density and modulus: the model "
+                    "predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz. The next "
+                    "version needs one clamp for every trial, a thermocouple taped to the ruler, "
+                    "and a controlled release height.",
+                    "This began as my Extended Essay, and I am carrying it on as an individual "
+                    "investigation.",
                 ],
                 "links": [],
             },
@@ -133,12 +153,12 @@ ROOMS = [
                 "short": "Gravitation to Levitation",
                 "title": "Gravitation to Levitation: Physics from Supernova to Superconductor",
                 "year": "2026",
-                "meta": ["July 2026 &middot; University of Chicago, summer course &middot; Grade: A"],
+                "meta": ["July 2026 &middot; University of Chicago, three-week summer session &middot; PHYS 10700 &middot; Grade: A"],
                 "label": ("Three-week summer session at the University of Chicago, taught in the "
                           "Kersten Physics Teaching Center. College credit, grade A."),
                 "image": {"src": IMG + "uchicago-library.jpg", "kind": "photo",
                           "alt": "Yeonhoo working through problems in a University of Chicago library, campus lanyard on the desk",
-                          "caption": "Working through the problem sets, Regenstein."},
+                          "caption": "Working through the problem sets in Chicago."},
                 "thumbs": [
                     {"src": IMG + "uchicago-sign.jpg", "kind": "photo",
                      "alt": "Yeonhoo beside the University of Chicago sign on campus"},
@@ -147,9 +167,10 @@ ROOMS = [
                 ],
                 "paras": [
                     "The three weeks were a magnificent experience &mdash; a chance to keep "
-                    "discovering physics beyond the high school level, in a discussion setting, "
-                    "with people who are interested in the subject as much as I am &mdash; three weeks of discussion-based, university-style lectures. It confirmed "
-                    "my interest in physics and made me even more attracted to it.",
+                    "discovering physics beyond the high school level, in discussion-based, "
+                    "university-style lectures, with people who are interested in the subject as "
+                    "much as I am. It confirmed my interest in physics and made me even more "
+                    "attracted to it.",
                     "The course ran the length of its own title, gravitation at one end and "
                     "levitation at the other. Alongside the lectures we worked in groups on two "
                     "presentations. The first was on the Hubble tension &mdash; the disagreement "
@@ -165,16 +186,16 @@ ROOMS = [
             },
             {
                 "n": "1.4",
-                "short": "Two Stanford courses in progress",
+                "short": "Two Stanford courses",
                 "title": "Special Relativity and Quantum Mechanics",
                 "year": "2026—",
-                "meta": ["2026 — present &middot; Stanford University via Coursera &middot; Stanford Online via edX &middot; Both in progress"],
+                "meta": ["August 2026 — present &middot; Relativity finished, Stanford University via Coursera &middot; Quantum Mechanics in progress, Stanford Online via edX"],
                 "label": ("Understanding Einstein: The Special Theory of Relativity. Quantum "
                           "Mechanics for Scientists and Engineers 1. Taken alongside IB Year 2."),
                 "paras": [
                     "I came back from the three weeks in Chicago wanting more of that level, so I "
-                    "signed up for two college-level courses and have been working through them "
-                    "alongside IB Year 2.",
+                    "signed up for two college-level courses alongside IB Year 2. I have finished "
+                    "the relativity course and am working through the quantum mechanics one.",
                     "Special relativity begins from two assumptions &mdash; that the laws of "
                     "physics look identical to anyone moving at constant velocity, and that light "
                     "travels at the same speed no matter who measures it &mdash; then follows "
@@ -316,7 +337,7 @@ ROOMS = [
             {
                 "n": "2.7", "short": "Chadwick International Mathematics Competition",
                 "title": "Chadwick International Mathematics Competition", "year": "2023—",
-                "meta": ["Grade 9 — present &middot; Second place in Grade 9, organising member since"],
+                "meta": ["Second place, Grade 9 &middot; Organising member, Grade 10 — present"],
                 "label": "Chadwick International. Silver Award, March 2024. Now writes problems and supervises exams.",
                 "image": {"src": IMG + "cimc-supervising.jpg", "kind": "photo",
                           "alt": "Yeonhoo supervising a student during the Chadwick International Mathematics Competition",
@@ -481,17 +502,19 @@ ROOMS = [
         "tile": {"src": IMG + "room-service-tile.jpg", "ratio": "ratio-16-9",
                  "alt": "Culture Protectors volunteers outside the Wongaksa free meal centre"},
         "wide": True,
-        "tile_caption": ("Four leadership roles, one organisation founded in Grade 9, and a national "
-                         "volunteer award."),
+        "tile_caption": ("Four leadership roles, one organisation founded in Grade 9, and three "
+                         "national awards."),
         "intro": ("Understanding the community around me and creating positive changes. Four "
-                  "leadership roles, one organisation I started in Grade 9 and still run, and a "
-                  "Silver Award at the National Youth Volunteer Awards."),
-        "stats": [("1", "Founded"), ("4", "Leadership roles"), ("7", "Entries")],
+                  "leadership roles, one organisation I started in Grade 9 and still run, the Korea "
+                  "Heritage Service Administrator&rsquo;s Award two years running, and a Silver "
+                  "Award at the National Youth Volunteer Awards."),
+        "stats": [("1", "Founded"), ("4", "Leadership roles"), ("3", "National awards")],
         "entries": [
             {
                 "n": "4.1", "short": "Chadwick International Culture Protectors",
                 "title": "Chadwick International Culture Protectors", "year": "2024—",
                 "meta": ["Grade 10 — present &middot; Member in Grade 10, Leader from Grade 11",
+                         "Korea Heritage Service Administrator&rsquo;s Award, Youth National Heritage Guardians Festival &middot; 2025 and 2026",
                          "National Youth Volunteer Awards, Silver Award &middot; Grade 11"],
                 "label": ("A club dedicated to protecting, promoting and sharing the rich culture "
                           "and history of the Republic of Korea."),
@@ -515,6 +538,9 @@ ROOMS = [
                     "Festival, <em>Nakseonjae: 100 Years of Time and Scenery</em>, and was given a "
                     "letter of appreciation by the Korean Imperial Family Culture Institute for "
                     "the role.",
+                    "For this work I received the Korea Heritage Service Administrator&rsquo;s "
+                    "Award (&#44397;&#44032;&#50976;&#49328;&#52397;&#51109;&#49345;) at the Youth "
+                    "National Heritage Guardians Festival two years in a row, in 2025 and 2026.",
                     "The Silver Award at the National Youth Volunteer Awards in Grade 11 came out "
                     "of this work.",
                 ],
@@ -660,7 +686,7 @@ ROOMS = [
         "stats": [("2", "KIMEA awards"), ("3", "Years at National Honor Festival"), ("3", "Recordings")],
         "entries": [
             {
-                "n": "5.1", "short": "J&rsquo;Blue Jazz Band", "title": "J&rsquo;Blue Jazz Band",
+                "n": "5.1", "short": "J&rsquo;Blu Jazz Band", "title": "J&rsquo;Blu Jazz Band",
                 "year": "2024—",
                 "meta": ["Grade 10 — present &middot; Drums",
                          "Gold and Platinum Award &middot; KIMEA Solo &amp; Ensemble"],
@@ -669,7 +695,7 @@ ROOMS = [
                           "arranged by John Wasson."),
                 "variant": "wide",
                 "lead": {"src": IMG + "jblue-drums.jpg", "ratio": "ratio-16-9",
-                         "alt": "Yeonhoo behind the drum kit during a J'Blue Jazz Band performance"},
+                         "alt": "Yeonhoo behind the drum kit during a J'Blu Jazz Band performance"},
                 "paras": [
                     "I play drums in the band. The drummer sets tempo and dynamics for everyone "
                     "in the room and cannot stop mid-piece to talk about it, which is a "
@@ -687,9 +713,9 @@ ROOMS = [
                         {"src": MED + "billies-bounce.mp4", "poster": MED + "billies-bounce-poster.jpg",
                          "title": "Billie&rsquo;s Bounce", "note": "Arranged by John Wasson. Platinum Award."},
                         {"src": MED + "all-of-me.mp4", "poster": MED + "all-of-me-poster.jpg",
-                         "title": "All of Me", "note": "J&rsquo;Blue Jazz Band."},
+                         "title": "All of Me", "note": "J&rsquo;Blu Jazz Band."},
                         {"src": MED + "isnt-she-lovely.mp4", "poster": MED + "isnt-she-lovely-poster.jpg",
-                         "title": "Isn&rsquo;t She Lovely", "note": "J&rsquo;Blue Jazz Band."},
+                         "title": "Isn&rsquo;t She Lovely", "note": "J&rsquo;Blu Jazz Band."},
                     ],
                 },
                 "links": [],
@@ -742,10 +768,10 @@ ROOMS = [
         "tile": {"src": IMG + "room-sport-tile.jpg", "ratio": "ratio-1-1",
                  "alt": "Junior varsity volleyball team lined up in uniform"},
         "wide": False,
-        "tile_caption": "A Kukkiwon black belt, two years as volleyball captain, and a dive certification.",
+        "tile_caption": "A Kukkiwon 4th Poom in taekwondo, two years as volleyball captain, and a dive certification.",
         "intro": ("Room for activity. Three things that took years rather than terms &mdash; and "
                   "that the r&eacute;sum&eacute; gives a single line each."),
-        "stats": [("4th", "Kukkiwon grade"), ("2", "Years as captain"), ("3", "Entries")],
+        "stats": [("4th", "Poom, Kukkiwon"), ("2", "Years as captain"), ("3", "Entries")],
         "entries": [
             {
                 "n": "6.1", "short": "Junior Varsity Volleyball", "title": "Junior Varsity Volleyball",
@@ -776,7 +802,7 @@ ROOMS = [
             {
                 "n": "6.2", "short": "Taekwondo", "title": "Taekwondo", "year": "2022",
                 "meta": ["Korea Taekwondo Association &middot; Kukkiwon-registered, June 2022"],
-                "label": "Fourth grade, registered with the Kukkiwon in June 2022.",
+                "label": "Kukkiwon 4th Poom, the under-15 equivalent of 4th Dan. Registered June 2022.",
                 "paras": [
                     "Taekwondo is the Korean national martial art, built on kicking, and the "
                     "sport most Korean children try at some point. I trained from when I was "
@@ -785,7 +811,7 @@ ROOMS = [
                     "step, so this is not something that can be reached quickly regardless of "
                     "ability. The years are built into the system.",
                 ],
-                "facts": [("4th", "Kukkiwon grade")],
+                "facts": [("4th", "Poom")],
                 "links": [("Certificate &#8595;", DOC + "taekwondo-4th-dan-certificate.pdf", True)],
             },
             {
@@ -874,11 +900,13 @@ def header(prefix, current):
 
 
 def footer(prefix, back=False):
-    rows = []
+    small = ""
     if back:
-        rows.append('        <a href="%sindex.html">&#8592; Back to catalogue</a>' % prefix)
-    rows.append('        <a href="%s" target="_blank" rel="noopener">Instagram &#8599;</a>' % INSTAGRAM)
-    rows.append('        <a href="%s%s" download>R&eacute;sum&eacute;, PDF &#8595;</a>' % (prefix, RESUME))
+        small = ('        <div class="footer-small">'
+                 '<a href="%sindex.html">&#8592; Back to catalogue</a></div>\n' % prefix)
+    button = ('        <a class="footer-resume" href="%s%s" download>'
+              'R&eacute;sum&eacute;, PDF &#8595;</a>' % (prefix, RESUME))
+    rows = [small + button]
     return """  <footer class="shell site-footer">
       <div>
         <div class="footer-label label">Write to me</div>
@@ -892,7 +920,7 @@ def footer(prefix, back=False):
   <div class="shell footer-colophon">
     <span>&copy; <span data-current-year>2026</span> %s</span>
     <span>Songdo, Korea</span>
-  </div>""" % (EMAIL, EMAIL, "<br>\n".join(rows), NAME)
+  </div>""" % (EMAIL, EMAIL, "".join(rows), NAME)
 
 
 def scripts(prefix, extra):
@@ -1044,7 +1072,6 @@ def build_about():
       <div class="about-body">
         <div class="label label--deep">About</div>
 %s
-        <a class="chip chip--primary" href="%s" download>R&eacute;sum&eacute;, PDF &#8595;</a>
       </div>
     </section>
 
@@ -1057,7 +1084,7 @@ def build_about():
 </html>
 """ % (head("About &mdash; %s" % NAME, "About Yeonhoo Kim, Class of 2027.",
             ["css/main.css", "css/about.css"], ""),
-       header("", "about"), IMG, "\n".join(body), RESUME,
+       header("", "about"), IMG, "\n".join(body),
        footer(""), scripts("", ["js/about.js"]))
     write(os.path.join(SITE, "about.html"), html)
 
