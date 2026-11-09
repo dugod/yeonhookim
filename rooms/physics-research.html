@@ -49,15 +49,15 @@
         <div class="room-stats">
           <div class="room-stat">
             <div class="room-stat-figure">1</div>
-            <div class="room-stat-caption">Paper submitted</div>
-          </div>
-          <div class="room-stat">
-            <div class="room-stat-figure">1</div>
-            <div class="room-stat-caption">In revision</div>
+            <div class="room-stat-caption">Paper under review</div>
           </div>
           <div class="room-stat">
             <div class="room-stat-figure">1</div>
             <div class="room-stat-caption">Conference poster</div>
+          </div>
+          <div class="room-stat">
+            <div class="room-stat-figure">3</div>
+            <div class="room-stat-caption">University courses</div>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
           </a>
           <a href="#entry-1-4" data-entry-link>
             <span class="contents-num">1.4</span>
-            <span>Two Stanford courses in progress</span>
+            <span>Two Stanford courses</span>
             <span class="contents-leader"></span>
             <span class="contents-meta">2026—</span>
           </a>
@@ -107,9 +107,9 @@
             </div>
           </div>
           <div class="entry-body">
-            <div class="entry-number">Entry 1.1 &middot; April 2025 — present &middot; Advisor, Professor P. Kim, Jeonbuk University<br>Poster accepted, GCIMM 2026 &middot; Submitted, Journal of Emerging Investigators 2026</div>
+            <div class="entry-number">Entry 1.1 &middot; April 2025 — present &middot; Advisor, Professor P. Kim, Jeonbuk University<br>Poster accepted, GCIMM 2026 &middot; Under review, National High School Journal of Science 2026</div>
             <h3 class="entry-title">Asymmetric Monostable Behavior of an Elastic von Mises Truss Under Base Excitation</h3>
-            <p class="entry-label">Research paper. Simulation built in MATLAB. Advised at Jeonbuk University. Poster accepted for presentation at GCIMM 2026; submitted to the Journal of Emerging Investigators, 2026.</p>
+            <p class="entry-label">Research paper. Simulation built in MATLAB. Advised at Jeonbuk University. Poster accepted for presentation at the Global Conference on Industrial, Materials, and Manufacturing (GCIMM), 2026; under review at the National High School Journal of Science (NHSJS), 2026.</p>
             <p>A von Mises truss is about as simple as a structure gets: two straight bars, pinned at their outer ends, meeting at a shallow peak in the middle. Press down on that peak hard enough and the whole thing snaps through and inverts. Whether it springs back on its own or stays inverted is the difference between monostable and bistable behaviour, and it is why these trusses turn up in energy harvesters, vibration isolators and mechanical switches.</p>
             <p>I became interested in the project while I was studying mechanical vibration. Reading through papers on bistable systems and forced vibration, I came across the paper by Ghoshal et al., which raised questions in me about testing conditions similar to theirs.</p>
             <p>I was able to contact Professor P. Kim through a personal connection &mdash; he was a friend of my parents from the same university, and I got a chance to talk with him. After that first conversation I reached out on my own about studying nonlinear vibration. He gave me recorded lectures and homework so I could build up what I needed, starting from engineering mathematics like second-order ordinary differential equations and moving to nonlinear vibration itself, damping included.</p>
@@ -131,20 +131,22 @@
             </div>
           </div>
           <div class="entry-body">
-            <div class="entry-number">Entry 1.2 &middot; Grade 11 — present &middot; IB Extended Essay, carried on as an individual investigation</div>
+            <div class="entry-number">Entry 1.2 &middot; Grade 11 — present &middot; Individual research &middot; IB Extended Essay in physics, May 2027 session</div>
             <h3 class="entry-title">Investigation on the Effect of Temperature Parameter on a Vibrating Cantilever System</h3>
-            <p class="entry-label">Extended Essay in physics, still in revision. Research question: how does temperature affect the natural frequency of a stainless steel cantilever beam at a fixed length?</p>
+            <p class="entry-label">Research question: how does temperature affect the natural frequency of a stainless steel cantilever beam at a fixed length? Tested from 24.8&nbsp;&deg;C to 138.4&nbsp;&deg;C.</p>
             <p>A cantilever is a beam clamped at one end and free at the other &mdash; a diving board. Displace the free end and it oscillates at a natural frequency set by its geometry and its stiffness. Stiffness is not a fixed property: heat a metal beam and its Young&rsquo;s modulus falls, so the frequency it wants to ring at drifts with temperature.</p>
-            <p>The apparatus is deliberately cheap. A stainless steel ruler is clamped between two wooden blocks with G-clamps at the 15 cm mark, magnets are fixed at the free end, and a Hall-effect sensor reads the oscillation. The whole assembly goes into an oven, and readings run from room temperature up to 140&nbsp;&deg;C.</p>
-            <p>Two effects compete as the steel heats. The falling Young&rsquo;s modulus lowers the frequency, and thermal expansion lengthens the beam slightly, which lowers it too &mdash; but across this range the expansion term is roughly eight times smaller, so the modulus dominates.</p>
-            <p>This began as my Extended Essay, but I have taken it past what the essay required and am still revising it as an individual investigation.</p>
+            <p>The apparatus is deliberately cheap. A stainless steel ruler is clamped between two wooden blocks with G-clamps at the 15 cm mark, a small magnet sits on each face of the free tip, and a Hall-effect sensor reads the oscillation at 1,000 samples a second. The whole assembly goes into an oven, with trials at six temperatures up to 140&nbsp;&deg;C and one at room temperature.</p>
+            <p>The model predicted the whole shift would be only about 0.6&nbsp;Hz. The built-in Fourier transform sorted frequencies into bins about 0.5&nbsp;Hz wide, too coarse to see a change that small, so the analysis moved to a Python script that splits the recording into individual flicks, windows and zero-pads each one, and interpolates the spectral peak.</p>
+            <p><strong>The result only partly answers the question.</strong> Across the full range there was no clear relationship. Between 82.1&nbsp;&deg;C and 138.4&nbsp;&deg;C the frequency fell steadily, at &minus;0.0047&nbsp;&plusmn;&nbsp;0.0012&nbsp;Hz per degree, which gives a temperature coefficient of Young&rsquo;s modulus of (&minus;3.5&nbsp;&plusmn;&nbsp;0.9)&nbsp;&times;&nbsp;10<sup>&minus;4</sup> per degree, within uncertainty of the literature value of &minus;4.0&nbsp;&times;&nbsp;10<sup>&minus;4</sup>.</p>
+            <p>Below 82&nbsp;&deg;C the frequencies sat lower than the hotter points, which heating cannot explain. I could not identify the cause, so instead of calling those points errors I limited the conclusion to the range where the data behaved. The room-temperature trial also used a different clamp from the oven trials, and the ruler was too thin to measure reliably with a micrometer, which threw off the calculated density and modulus: the model predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz. The next version needs one clamp for every trial, a thermocouple taped to the ruler, and a controlled release height.</p>
+            <p>This began as my Extended Essay, and I am carrying it on as an individual investigation.</p>
           </div>
         </article>
         <article class="entry" id="entry-1-3">
           <div class="entry-media">
             <figure>
               <img class="entry-shot is-photo" src="../assets/images/uchicago-library.jpg" alt="Yeonhoo working through problems in a University of Chicago library, campus lanyard on the desk" loading="lazy">
-              <figcaption>Working through the problem sets, Regenstein.</figcaption>
+              <figcaption>Working through the problem sets in Chicago.</figcaption>
             </figure>
             <div class="entry-thumbs">
               <img class="entry-thumb is-photo" src="../assets/images/uchicago-sign.jpg" alt="Yeonhoo beside the University of Chicago sign on campus" loading="lazy">
@@ -152,10 +154,10 @@
             </div>
           </div>
           <div class="entry-body">
-            <div class="entry-number">Entry 1.3 &middot; July 2026 &middot; University of Chicago, summer course &middot; Grade: A</div>
+            <div class="entry-number">Entry 1.3 &middot; July 2026 &middot; University of Chicago, three-week summer session &middot; PHYS 10700 &middot; Grade: A</div>
             <h3 class="entry-title">Gravitation to Levitation: Physics from Supernova to Superconductor</h3>
             <p class="entry-label">Three-week summer session at the University of Chicago, taught in the Kersten Physics Teaching Center. College credit, grade A.</p>
-            <p>The three weeks were a magnificent experience &mdash; a chance to keep discovering physics beyond the high school level, in a discussion setting, with people who are interested in the subject as much as I am &mdash; three weeks of discussion-based, university-style lectures. It confirmed my interest in physics and made me even more attracted to it.</p>
+            <p>The three weeks were a magnificent experience &mdash; a chance to keep discovering physics beyond the high school level, in discussion-based, university-style lectures, with people who are interested in the subject as much as I am. It confirmed my interest in physics and made me even more attracted to it.</p>
             <p>The course ran the length of its own title, gravitation at one end and levitation at the other. Alongside the lectures we worked in groups on two presentations. The first was on the Hubble tension &mdash; the disagreement between two ways of measuring how fast the universe is expanding, one built from the cosmic distance ladder and one from the cosmic microwave background. The second was on blackbody radiation, starting from the question of where starlight actually comes from.</p>
             <p>There were guest lectures too. The one I keep returning to was a graduate student&rsquo;s lecture on dark matter and X-ray telescopes.</p>
             <div class="chips">
@@ -166,10 +168,10 @@
         </article>
         <article class="entry entry--text" id="entry-1-4">
           <div class="entry-body">
-            <div class="entry-number">Entry 1.4 &middot; 2026 — present &middot; Stanford University via Coursera &middot; Stanford Online via edX &middot; Both in progress</div>
+            <div class="entry-number">Entry 1.4 &middot; August 2026 — present &middot; Relativity finished, Stanford University via Coursera &middot; Quantum Mechanics in progress, Stanford Online via edX</div>
             <h3 class="entry-title">Special Relativity and Quantum Mechanics</h3>
             <p class="entry-label">Understanding Einstein: The Special Theory of Relativity. Quantum Mechanics for Scientists and Engineers 1. Taken alongside IB Year 2.</p>
-            <p>I came back from the three weeks in Chicago wanting more of that level, so I signed up for two college-level courses and have been working through them alongside IB Year 2.</p>
+            <p>I came back from the three weeks in Chicago wanting more of that level, so I signed up for two college-level courses alongside IB Year 2. I have finished the relativity course and am working through the quantum mechanics one.</p>
             <p>Special relativity begins from two assumptions &mdash; that the laws of physics look identical to anyone moving at constant velocity, and that light travels at the same speed no matter who measures it &mdash; then follows them without flinching, until time dilation, length contraction and the mass&ndash;energy relation arrive as consequences rather than as separate discoveries.</p>
             <p>The quantum mechanics course is the first half of a two-part sequence: wavefunctions, the Schr&ouml;dinger equation, particles in wells and against barriers. It is the machinery that has to be in place before any application makes sense.</p>
           </div>
