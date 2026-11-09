@@ -136,10 +136,29 @@
             <p class="entry-label">Research question: how does temperature affect the natural frequency of a stainless steel cantilever beam at a fixed length? Tested from 24.8&nbsp;&deg;C to 138.4&nbsp;&deg;C.</p>
             <p>A cantilever is a beam clamped at one end and free at the other &mdash; a diving board. Displace the free end and it oscillates at a natural frequency set by its geometry and its stiffness. Stiffness is not a fixed property: heat a metal beam and its Young&rsquo;s modulus falls, so the frequency it wants to ring at drifts with temperature.</p>
             <p>The apparatus is deliberately cheap. A stainless steel ruler is clamped between two wooden blocks with G-clamps at the 15 cm mark, a small magnet sits on each face of the free tip, and a Hall-effect sensor reads the oscillation at 1,000 samples a second. The whole assembly goes into an oven, with trials at six temperatures up to 140&nbsp;&deg;C and one at room temperature.</p>
-            <p>The model predicted the whole shift would be only about 0.6&nbsp;Hz. The built-in Fourier transform sorted frequencies into bins about 0.5&nbsp;Hz wide, too coarse to see a change that small, so the analysis moved to a Python script that splits the recording into individual flicks, windows and zero-pads each one, and interpolates the spectral peak.</p>
+            <p>The model predicted the whole shift would be only about 0.6&nbsp;Hz. The built-in Fourier transform sorted frequencies into bins about 0.5&nbsp;Hz wide, too coarse to see a change that small, so the analysis moved to a Python script that splits the recording into individual flicks, windows and zero-pads each one, and interpolates the spectral peak. Tested on 400 synthetic signals of known frequency, it recovered the answer to within about 0.002&nbsp;Hz.</p>
             <p><strong>The result only partly answers the question.</strong> Across the full range there was no clear relationship. Between 82.1&nbsp;&deg;C and 138.4&nbsp;&deg;C the frequency fell steadily, at &minus;0.0047&nbsp;&plusmn;&nbsp;0.0012&nbsp;Hz per degree, which gives a temperature coefficient of Young&rsquo;s modulus of (&minus;3.5&nbsp;&plusmn;&nbsp;0.9)&nbsp;&times;&nbsp;10<sup>&minus;4</sup> per degree, within uncertainty of the literature value of &minus;4.0&nbsp;&times;&nbsp;10<sup>&minus;4</sup>.</p>
-            <p>Below 82&nbsp;&deg;C the frequencies sat lower than the hotter points, which heating cannot explain. I could not identify the cause, so instead of calling those points errors I limited the conclusion to the range where the data behaved. The room-temperature trial also used a different clamp from the oven trials, and the ruler was too thin to measure reliably with a micrometer, which threw off the calculated density and modulus: the model predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz. The next version needs one clamp for every trial, a thermocouple taped to the ruler, and a controlled release height.</p>
+            <p>Below 82&nbsp;&deg;C the frequencies sat lower than the hotter points, which heating cannot explain. I could not identify the cause, so instead of calling those points errors I limited the conclusion to the range where the data behaved.</p>
+            <p>The model also predicted 20.1&nbsp;Hz where the ruler rang at 26.5&nbsp;Hz, and I traced that gap to two causes. The textbook clamp used to measure the constants was slightly compliant, so the ruler behaved as if it were about 15&nbsp;mm longer; allowing for that brings the prediction to 26.62&nbsp;Hz, within 0.4% of the measurement. The ruler&rsquo;s measured thickness was also too small, which inflated both the density and Young&rsquo;s modulus; a single corrected thickness brings both back into the accepted range for stainless steel. Neither affects the temperature coefficient, because every dimension cancels out of the fractional gradient.</p>
+            <p>The next version needs one rigid clamp for every trial, a thermocouple taped to the ruler, and a release from a fixed stop instead of a flick by hand.</p>
             <p>This began as my Extended Essay, and I am carrying it on as an individual investigation.</p>
+            <div class="entry-facts">
+          <div class="entry-fact-item">
+            <div class="entry-fact-figure">0.26&nbsp;Hz</div>
+            <div class="entry-fact-caption">Shift measured</div>
+          </div>
+          <div class="entry-fact-item">
+            <div class="entry-fact-figure">&plusmn;0.002&nbsp;Hz</div>
+            <div class="entry-fact-caption">Method accuracy</div>
+          </div>
+          <div class="entry-fact-item">
+            <div class="entry-fact-figure">11.5%</div>
+            <div class="entry-fact-caption">From literature &alpha;<sub>E</sub></div>
+          </div>
+            </div>
+            <div class="chips">
+              <a class="chip chip--primary" href="../assets/docs/cantilever-investigation.pdf" download>Read the full investigation, PDF &#8595;</a>
+            </div>
           </div>
         </article>
         <article class="entry" id="entry-1-3">
